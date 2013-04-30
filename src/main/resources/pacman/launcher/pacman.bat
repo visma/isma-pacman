@@ -1,0 +1,1 @@
+java -Djava.library.path=./native/windows -jar Isma-games.jar
