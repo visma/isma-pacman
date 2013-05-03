@@ -115,17 +115,7 @@ public class PacmanGame extends ResourcesGame<PacmanResourcesManager> implements
     }
 
     public static void main(String[] argv) throws Exception {
-        try {
-//            NativeGuide.prepare(Arch.WINDOWS_64, "/lib_lwjgl/native/windows/jinput-dx8_64.dll");
-//            NativeGuide.prepare(Arch.WINDOWS_64, "/lib_lwjgl/native/windows/jinput-dx8_64.dll");
-//            NativeGuide.prepare(Arch.WINDOWS_64, "/lib_lwjgl/native/windows/jinput-raw_64.dll");
-//            NativeGuide.prepare(Arch.WINDOWS_64, "/lib_lwjgl/native/windows/lwjgl64.dll");
-//            NativeGuide.prepare(Arch.WINDOWS_64, "/lib_lwjgl/native/windows/OpenAL64.dll");
-            new NativeLoader().load();
-        } catch (java.io.IOException e) {
-            System.out.println("Could not prepare the native libraries.");
-            throw e;
-        }
+        new NativeLoader().load();
         PacmanGame game = new PacmanGame();
         AppGameContainer appContainer = new AppGameContainer(game,
                 RESOLUTION.width,
