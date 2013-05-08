@@ -29,17 +29,16 @@ public class NativeLoader {
             NativeGuide.prepare(WINDOWS_32, LWJGL_NATIVE + "windows/jinput-raw.dll");
             NativeGuide.prepare(WINDOWS_32, LWJGL_NATIVE + "windows/lwjgl.dll");
             NativeGuide.prepare(WINDOWS_32, LWJGL_NATIVE + "windows/OpenAL32.dll");
-        } else if (isMacOs32()) {
-            LOGGER.info("arch : macos32\n");
-            NativeGuide.prepare(Arch.MAC_32, LWJGL_NATIVE + "macosx/libjinput-osx.jnilib");
-            NativeGuide.prepare(Arch.MAC_32, LWJGL_NATIVE + "macosx/liblwjgl.jnilib");
-            NativeGuide.prepare(Arch.MAC_32, LWJGL_NATIVE + "macosx/openal.dylib");
-        } else if (isMacOs64()) {
-            LOGGER.info("arch : macos64\n");
-            NativeGuide.prepare(Arch.MAC_64, LWJGL_NATIVE + "macosx/libjinput-osx.jnilib");
-            NativeGuide.prepare(Arch.MAC_64, LWJGL_NATIVE + "macosx/liblwjgl.jnilib");
-            NativeGuide.prepare(Arch.MAC_64, LWJGL_NATIVE + "macosx/openal.dylib");
-        }else {
+        } else if (isMacOs32() || isMacOs64()) {
+            Arch arch = isMacOs32() ? Arch.MAC_32 : Arch.MAC_64;
+            LOGGER.info("arch : " + arch + "\n");
+            if (System.getProperty("java.version").startsWith("1.7")) {
+                LOGGER.warning("java 7 not compatible with MACOSX : use java 6 instead if crash");
+            }
+            NativeGuide.prepare(arch, LWJGL_NATIVE + "macosx/libjinput-osx.jnilib");
+            NativeGuide.prepare(arch, LWJGL_NATIVE + "macosx/liblwjgl.jnilib");
+            NativeGuide.prepare(arch, LWJGL_NATIVE + "macosx/openal.dylib");
+        } else {
             System.err.println("OS not yet handled");
             System.exit(1);
         }
