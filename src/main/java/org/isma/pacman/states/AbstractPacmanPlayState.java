@@ -370,6 +370,7 @@ public abstract class AbstractPacmanPlayState extends BasicResourcesGameState<Pa
 
 
     public void doRender(GameContainer container, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
+        //TODO cycles partout entre les entities et les drawers : corriger afin que les entities ne connaissent pas les drawers
         maze.draw(g);
         gameBoard.draw(pacman.getLives(), game, round, fruit);
 
