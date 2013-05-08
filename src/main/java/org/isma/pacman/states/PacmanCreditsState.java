@@ -35,7 +35,7 @@ public class PacmanCreditsState extends BasicResourcesGameState<PacmanGameContex
         textFont = fontResources.getTextFont();
         drawer = new TextDrawer(getContext());
 
-        zoomRatio = 1f;//context.getZoomRatio();
+        zoomRatio = 1f;
         //TODO corriger bug centrage lorsque zoom...
     }
 

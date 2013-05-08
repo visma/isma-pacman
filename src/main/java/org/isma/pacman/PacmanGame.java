@@ -1,7 +1,5 @@
 package org.isma.pacman;
 
-import nullprogram.Arch;
-import nullprogram.NativeGuide;
 import org.isma.pacman.entity.Maze;
 import org.isma.pacman.manager.HighScoreManager;
 import org.isma.pacman.repository.FileHighScoreRepository;
@@ -14,8 +12,6 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 
 import java.awt.*;
-import java.io.File;
-import java.util.StringTokenizer;
 
 /**
  * TODO - IA : différences plus marqués entre les fantomes

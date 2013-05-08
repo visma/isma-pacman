@@ -1,7 +1,7 @@
 package org.isma.pacman.manager;
 
-import org.isma.pacman.repository.HighScoreRepository;
 import org.isma.pacman.entity.RankedPlayer;
+import org.isma.pacman.repository.HighScoreRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class HighScoreManager {
     private final HighScoreRepository repository;
     private RankedPlayer currentRankedPlayer;
 
-    private final static int NAME_SIZE = 10;
+    private static final int NAME_SIZE = 10;
     private final List<Character> chars;
 
     public HighScoreManager(HighScoreRepository repository) {

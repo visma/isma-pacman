@@ -18,7 +18,6 @@ import java.util.List;
 
 import static org.isma.slick2d.PositionHelper.findTilesAtPosition;
 import static org.isma.slick2d.PositionHelper.getDistance;
-import static org.isma.slick2d.PositionHelper.isATile;
 import static org.isma.slick2d.RandomUtils.getRandomElement;
 
 public class PacmanAI extends CharacterAI<Pacman> {
