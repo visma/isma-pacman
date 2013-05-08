@@ -5,6 +5,7 @@
     <!--
     | POM Relationships
     -->
+
     <groupId>org.isma</groupId>
     <artifactId>isma-pacman</artifactId>
     <version>0.1</version>
