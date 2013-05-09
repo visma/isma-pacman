@@ -1,6 +1,5 @@
 package org.isma.pacman.entity;
 
-import org.isma.pacman.Collisionable;
 import org.isma.pacman.PacmanGameContext;
 import org.isma.slick2d.BitmapObject;
 import org.isma.slick2d.Direction;

@@ -1,6 +1,5 @@
 package org.isma.pacman.entity;
 
-import org.isma.pacman.Collisionable;
 import org.newdawn.slick.geom.Rectangle;
 
 public class GhostHouse implements Target, Collisionable {

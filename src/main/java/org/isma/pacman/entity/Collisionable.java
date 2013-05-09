@@ -1,4 +1,4 @@
-package org.isma.pacman;
+package org.isma.pacman.entity;
 
 import org.newdawn.slick.geom.Rectangle;
 
