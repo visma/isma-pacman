@@ -50,7 +50,7 @@ public abstract class CharacterAI<C extends Character> {
                 }
             }
         }
-        character.move(currentDirection, maze);
+        MazeMoveHelper.move(character, currentDirection, maze);
     }
 
     protected void onTileReached() {

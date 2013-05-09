@@ -3,12 +3,11 @@ package org.isma.pacman.entity;
 import org.isma.pacman.PacmanGameContext;
 import org.isma.slick2d.BitmapObject;
 import org.isma.slick2d.Direction;
-import org.isma.slick2d.PositionHelper;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.geom.Line;
 import org.newdawn.slick.geom.Rectangle;
 
-import static org.isma.slick2d.Direction.*;
+import static org.isma.slick2d.Direction.EAST;
 
 public abstract class Character<C extends Character>
         extends BitmapObject<Animation, PacmanGameContext> implements Collisionable {
@@ -39,39 +38,8 @@ public abstract class Character<C extends Character>
     }
 
 
-    protected float getSpeed() {
+    public float getSpeed() {
         return speed;
-    }
-
-    public void move(Direction direction, Maze level) {
-        if (direction == Direction.WEST) {
-            x -= getSpeed();
-        } else if (direction == EAST) {
-            x += getSpeed();
-        } else if (direction == NORTH) {
-            y -= getSpeed();
-        } else if (direction == SOUTH) {
-            y += getSpeed();
-        } else {
-            throw new RuntimeException("unexpected input move");
-        }
-        Rectangle center = getCenter();
-        if (PositionHelper.isOutOfBounds(level.getBounds(), center)) {
-            Direction boundOut = PositionHelper.getBoundOut(level.getBounds(), center);
-            if (boundOut == EAST) {
-                x = level.getBounds().getMinX();
-            }
-            if (boundOut == Direction.WEST) {
-                x = level.getBounds().getMaxX() - getWidth();
-            }
-            if (boundOut == Direction.NORTH) {
-                y = level.getBounds().getMaxY() - getHeight();
-            }
-            if (boundOut == Direction.SOUTH) {
-                y = level.getBounds().getMinY();
-            }
-        }
-        setCurrentDirection(direction);
     }
 
 
@@ -222,4 +190,13 @@ public abstract class Character<C extends Character>
     public int hashCode() {
         return getName().hashCode();
     }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public void setY(float y) {
+        this.y = y;
+    }
+
 }

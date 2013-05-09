@@ -47,17 +47,18 @@ public class CharacterInputMoveHandler<C extends Character> implements MoveHandl
 
     private boolean updateCharacterPosition(Direction direction, Character character, Maze maze) {
         if (direction != null) {
+            //TODO a refactorer
             if ((direction == WEST) && MazeMoveHelper.canMoveLeft(maze, character)) {
-                character.move(direction, maze);
+                MazeMoveHelper.move(character, direction, maze);
                 return true;
             } else if (direction == EAST && MazeMoveHelper.canMoveRight(maze, character)) {
-                character.move(direction, maze);
+                MazeMoveHelper.move(character, direction, maze);
                 return true;
             } else if (direction == NORTH && MazeMoveHelper.canMoveTop(maze, character)) {
-                character.move(direction, maze);
+                MazeMoveHelper.move(character, direction, maze);
                 return true;
             } else if (direction == SOUTH && MazeMoveHelper.canMoveBottom(maze, character)) {
-                character.move(direction, maze);
+                MazeMoveHelper.move(character, direction, maze);
                 return true;
             }
         }
