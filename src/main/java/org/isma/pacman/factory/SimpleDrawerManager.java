@@ -1,6 +1,6 @@
-package org.isma.pacman.manager;
+package org.isma.pacman.factory;
 
-import org.isma.pacman.PacmanGameContext;
+import org.isma.pacman.context.PacmanGameContext;
 import org.isma.pacman.drawer.GhostDrawer;
 import org.isma.pacman.drawer.MazeDrawer;
 import org.isma.pacman.drawer.PacmanDrawer;

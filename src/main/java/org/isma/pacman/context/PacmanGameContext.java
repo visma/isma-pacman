@@ -1,4 +1,4 @@
-package org.isma.pacman;
+package org.isma.pacman.context;
 
 import org.isma.pacman.manager.HighScoreManager;
 import org.isma.pacman.resources.PacmanResourcesManager;

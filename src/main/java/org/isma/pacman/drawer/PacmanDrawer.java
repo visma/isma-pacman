@@ -1,6 +1,6 @@
 package org.isma.pacman.drawer;
 
-import org.isma.pacman.PacmanGameContext;
+import org.isma.pacman.context.PacmanGameContext;
 import org.isma.pacman.entity.Ghost;
 import org.isma.pacman.entity.Pacman;
 import org.isma.slick2d.drawer.RenderableDrawer;

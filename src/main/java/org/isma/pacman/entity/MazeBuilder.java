@@ -1,6 +1,6 @@
 package org.isma.pacman.entity;
 
-import org.isma.pacman.PacmanGameContext;
+import org.isma.pacman.context.PacmanGameContext;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 

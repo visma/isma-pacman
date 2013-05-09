@@ -1,12 +1,12 @@
 package org.isma.pacman.entity;
 
-import org.isma.pacman.GhostEnum;
-import org.isma.pacman.PacmanGameContext;
+import org.isma.pacman.context.PacmanGameContext;
+import org.isma.pacman.resources.GhostEnum;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 
-import static org.isma.pacman.GhostEnum.*;
 import static org.isma.pacman.entity.Fruit.FruitEnum;
+import static org.isma.pacman.resources.GhostEnum.*;
 
 public class PacmanEntitiesFactory {
     private static final int PACMAN_X_ORIGIN = 4 + (4 * 25);

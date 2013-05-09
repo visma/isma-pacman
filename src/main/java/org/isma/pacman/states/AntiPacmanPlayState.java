@@ -1,9 +1,9 @@
 package org.isma.pacman.states;
 
-import org.isma.pacman.PacmanGameContext;
 import org.isma.pacman.ai.CharacterAI;
 import org.isma.pacman.ai.PacmanAI;
 import org.isma.pacman.ai.ShortestPathAI;
+import org.isma.pacman.context.PacmanGameContext;
 import org.isma.pacman.entity.Ghost;
 import org.isma.pacman.entity.Pacman;
 import org.isma.pacman.handlers.CharacterInputMoveHandler;
@@ -13,8 +13,8 @@ import org.isma.pacman.handlers.PacmanAIMoveHandler;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 
-import static org.isma.pacman.GhostEnum.BLINKY;
 import static org.isma.pacman.PacmanGame.ANTIPACMANPLAY_STATE;
+import static org.isma.pacman.resources.GhostEnum.BLINKY;
 
 public class AntiPacmanPlayState extends AbstractPacmanPlayState {
     public AntiPacmanPlayState(PacmanGameContext context) throws SlickException {

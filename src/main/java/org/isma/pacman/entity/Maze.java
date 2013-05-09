@@ -1,6 +1,6 @@
 package org.isma.pacman.entity;
 
-import org.isma.pacman.PacmanGameContext;
+import org.isma.pacman.context.PacmanGameContext;
 import org.isma.pacman.tileset.DisplayTiledLayer;
 import org.isma.pacman.tileset.FoodTiledLayer;
 import org.isma.pacman.tileset.PathTiledLayer;
@@ -15,11 +15,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.isma.pacman.PacmanProperty.LEVEL_TILES;
 
 public class Maze extends TiledObject<PacmanGameContext> {
-    public static final int MAZE_WIDTH = 224;
     public static final int MAZE_HEIGHT = 288;
+    public static final int MAZE_WIDTH = 224;
+    private static final String LEVEL_TILES_PROPERTY = "level.tiles";
 
     private final DisplayTiledLayer displayLayer;
     private final FoodTiledLayer foodLayer;
@@ -58,7 +58,7 @@ public class Maze extends TiledObject<PacmanGameContext> {
 
 
     protected String getTiledMapPropertyName() {
-        return LEVEL_TILES.getPropertyName();
+        return LEVEL_TILES_PROPERTY;
     }
 
 

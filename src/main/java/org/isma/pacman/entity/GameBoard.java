@@ -1,8 +1,6 @@
 package org.isma.pacman.entity;
 
-import org.isma.pacman.Game;
-import org.isma.pacman.PacmanGameContext;
-import org.isma.pacman.Round;
+import org.isma.pacman.context.PacmanGameContext;
 import org.isma.pacman.resources.PacmanFontResources;
 import org.isma.pacman.resources.PacmanResourcesManager;
 import org.isma.slick2d.GameObject;

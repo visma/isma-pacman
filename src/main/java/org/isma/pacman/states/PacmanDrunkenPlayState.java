@@ -1,7 +1,7 @@
 package org.isma.pacman.states;
 
 import org.isma.pacman.PacmanGame;
-import org.isma.pacman.PacmanGameContext;
+import org.isma.pacman.context.PacmanGameContext;
 import org.isma.slick2d.GameContext;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;

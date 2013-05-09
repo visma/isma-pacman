@@ -1,4 +1,4 @@
-package org.isma.pacman;
+package org.isma.pacman.entity.helper;
 
 import org.isma.pacman.entity.RankedPlayer;
 import org.isma.slick2d.font.ColoredText;

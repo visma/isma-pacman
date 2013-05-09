@@ -2,7 +2,7 @@ package org.isma.pacman.drawer;
 
 import org.isma.math.SinusVariation;
 import org.isma.math.TrigoFunctionFactory;
-import org.isma.pacman.PacmanGameContext;
+import org.isma.pacman.context.PacmanGameContext;
 import org.isma.pacman.entity.Food;
 import org.isma.pacman.entity.Maze;
 import org.isma.slick2d.drawer.TiledMapDrawer;

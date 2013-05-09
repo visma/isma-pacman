@@ -1,4 +1,4 @@
-package org.isma.pacman;
+package org.isma.pacman.entity;
 
 
 import static org.isma.pacman.rules.PacmanRules.winAnExtraLife;

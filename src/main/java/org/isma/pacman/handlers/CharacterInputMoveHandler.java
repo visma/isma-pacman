@@ -1,8 +1,8 @@
 package org.isma.pacman.handlers;
 
-import org.isma.pacman.MazeMoveHelper;
 import org.isma.pacman.entity.Character;
 import org.isma.pacman.entity.Maze;
+import org.isma.pacman.entity.helper.MazeMoveHelper;
 import org.isma.slick2d.Direction;
 import org.newdawn.slick.Input;
 

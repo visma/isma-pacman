@@ -1,11 +1,11 @@
 package org.isma.pacman.ai;
 
 import org.isma.graph.Graph;
-import org.isma.pacman.MazeMoveHelper;
 import org.isma.pacman.entity.Character;
 import org.isma.pacman.entity.Maze;
 import org.isma.pacman.entity.Pacman;
 import org.isma.pacman.entity.Target;
+import org.isma.pacman.entity.helper.MazeMoveHelper;
 import org.isma.slick2d.Direction;
 
 import java.awt.*;

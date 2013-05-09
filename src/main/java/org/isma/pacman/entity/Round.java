@@ -1,4 +1,4 @@
-package org.isma.pacman;
+package org.isma.pacman.entity;
 
 public class Round {
     public int index;

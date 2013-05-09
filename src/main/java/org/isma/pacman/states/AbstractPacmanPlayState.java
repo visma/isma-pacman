@@ -1,9 +1,10 @@
 package org.isma.pacman.states;
 
-import org.isma.pacman.*;
+import org.isma.pacman.PacmanGame;
+import org.isma.pacman.context.PacmanGameContext;
 import org.isma.pacman.entity.*;
+import org.isma.pacman.factory.SimpleDrawerManager;
 import org.isma.pacman.manager.GameMovesManager;
-import org.isma.pacman.manager.SimpleDrawerManager;
 import org.isma.pacman.resources.PacmanSoundResources;
 import org.isma.slick2d.BasicResourcesGameState;
 import org.newdawn.slick.GameContainer;

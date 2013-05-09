@@ -1,7 +1,6 @@
-package org.isma.pacman;
+package org.isma.pacman.manager;
 
 
-import org.isma.pacman.manager.HighScoreManager;
 import org.newdawn.slick.Input;
 
 public class HighScoreInput {
@@ -34,7 +33,7 @@ public class HighScoreInput {
         } else if (input.isKeyPressed(Input.KEY_DOWN)) {
             name[charIndex] = manager.previous(name[charIndex]);
         }
-        if (name[charIndex] == null){
+        if (name[charIndex] == null) {
             name[charIndex] = DEFAULT_CHAR;
         }
     }
@@ -53,7 +52,7 @@ public class HighScoreInput {
 
     public String getName() {
         String str = "";
-        for (int i = 0; i < getCharCount();i++){
+        for (int i = 0; i < getCharCount(); i++) {
             str += getCharAt(i);
         }
         return str;

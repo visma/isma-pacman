@@ -1,4 +1,4 @@
-package org.isma.pacman;
+package org.isma.pacman.entity;
 
 public interface ScoreListener {
     void scoreEvent();

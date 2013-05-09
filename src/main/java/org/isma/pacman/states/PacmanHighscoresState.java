@@ -1,14 +1,14 @@
 package org.isma.pacman.states;
 
-import org.isma.pacman.HighScoreHelper;
-import org.isma.pacman.HighScoreInput;
 import org.isma.pacman.PacmanGame;
-import org.isma.pacman.PacmanGameContext;
-import org.isma.slick2d.drawer.TextDrawer;
+import org.isma.pacman.context.PacmanGameContext;
 import org.isma.pacman.entity.RankedPlayer;
+import org.isma.pacman.entity.helper.HighScoreHelper;
+import org.isma.pacman.manager.HighScoreInput;
 import org.isma.pacman.manager.HighScoreManager;
 import org.isma.pacman.resources.PacmanFontResources;
 import org.isma.slick2d.BasicResourcesGameState;
+import org.isma.slick2d.drawer.TextDrawer;
 import org.isma.slick2d.font.ColoredText;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;

@@ -1,8 +1,8 @@
 package org.isma.pacman.states;
 
 import org.isma.pacman.PacmanGame;
-import org.isma.pacman.PacmanGameContext;
 import org.isma.pacman.ai.ShortestPathAI;
+import org.isma.pacman.context.PacmanGameContext;
 import org.isma.pacman.entity.Ghost;
 import org.isma.pacman.entity.Pacman;
 import org.isma.pacman.handlers.CharacterInputMoveHandler;

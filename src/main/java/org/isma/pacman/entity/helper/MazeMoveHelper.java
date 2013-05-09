@@ -1,4 +1,4 @@
-package org.isma.pacman;
+package org.isma.pacman.entity.helper;
 
 import org.isma.pacman.entity.Character;
 import org.isma.pacman.entity.Maze;
@@ -34,7 +34,7 @@ public class MazeMoveHelper {
         return directions;
     }
 
-    public static boolean canMoveLeft(Maze maze, Character character) {
+    public static boolean canMoveLeft(Maze maze, org.isma.pacman.entity.Character character) {
         return maze.getPathTiledLayer().existPath(character.getLeftLine(), character.getMoveLevel());
     }
 

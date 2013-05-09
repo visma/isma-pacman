@@ -1,6 +1,6 @@
 package org.isma.pacman.entity;
 
-import org.isma.pacman.PacmanGameContext;
+import org.isma.pacman.context.PacmanGameContext;
 import org.isma.slick2d.BitmapObject;
 import org.isma.slick2d.Direction;
 import org.newdawn.slick.Animation;

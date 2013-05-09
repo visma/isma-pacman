@@ -1,10 +1,10 @@
 package org.isma.pacman.states;
 
 import org.isma.pacman.PacmanGame;
-import org.isma.pacman.PacmanGameContext;
-import org.isma.slick2d.drawer.TextDrawer;
+import org.isma.pacman.context.PacmanGameContext;
 import org.isma.pacman.resources.PacmanFontResources;
 import org.isma.slick2d.BasicResourcesGameState;
+import org.isma.slick2d.drawer.TextDrawer;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 

@@ -1,4 +1,6 @@
-package org.isma.pacman;
+package org.isma.pacman.entity;
+
+import org.isma.pacman.PacmanGame;
 
 public enum PacmanMenuOption {
     PLAY("play", PacmanGame.PLAY_STATE),

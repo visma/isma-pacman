@@ -1,4 +1,4 @@
-package org.isma.pacman;
+package org.isma.pacman.resources;
 
 public enum GhostEnum {
     BLINKY("blinky"),

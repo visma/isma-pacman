@@ -1,5 +1,6 @@
 package org.isma.pacman;
 
+import org.isma.pacman.context.PacmanGameContext;
 import org.isma.pacman.entity.Maze;
 import org.isma.pacman.manager.HighScoreManager;
 import org.isma.pacman.repository.FileHighScoreRepository;
