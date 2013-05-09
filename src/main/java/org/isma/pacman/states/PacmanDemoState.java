@@ -45,16 +45,16 @@ public class PacmanDemoState extends AbstractPacmanPlayState {
 
     @Override
     protected void configurePacmanMoveHandlerAndAI(GameContainer container) {
-        pacman.setMoveHandler(new PacmanAIMoveHandler(ghosts));
-        pacman.setAi(new PacmanAI(pacman, ghosts, maze.getFoodTiledLayer()));
+        PacmanAI ai = new PacmanAI(pacman, ghosts, maze.getFoodTiledLayer());
+        gameMovesManager.put(pacman, new PacmanAIMoveHandler(ghosts, ai));
     }
 
     @Override
     protected void configureGhostsMoveHandlerAndAI(GameContainer container) {
-        MoveHandler ghostMoveHandler = new GhostAIMoveHandler(pacman, maze);
         for (Ghost ghost : ghosts) {
-            ghost.setMoveHandler(ghostMoveHandler);
-            ghost.setAi(new ShortestPathAI(ghost, maze));
+            ShortestPathAI ai = new ShortestPathAI(ghost, maze);
+            MoveHandler ghostMoveHandler = new GhostAIMoveHandler(pacman, maze, ai);
+            gameMovesManager.put(ghost, ghostMoveHandler);
         }
     }
 }

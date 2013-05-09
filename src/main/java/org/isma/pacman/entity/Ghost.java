@@ -1,7 +1,6 @@
 package org.isma.pacman.entity;
 
 import org.isma.pacman.PacmanGameContext;
-import org.isma.pacman.ai.GhostAI;
 import org.isma.pacman.resources.PacmanConfiguration;
 import org.isma.pacman.resources.PacmanImageResources;
 import org.newdawn.slick.SlickException;
@@ -11,7 +10,7 @@ import static java.lang.String.format;
 import static org.isma.slick2d.Direction.*;
 import static org.isma.slick2d.RenderableFactory.buildAnimation;
 
-public class Ghost extends Character<Ghost, GhostAI> {
+public class Ghost extends Character<Ghost> {
     private static final String FRIGHTENED_BLINK_KEY = "frightened.blink.%s";
     private static final String NAKED_KEY_SUFFIX = "_naked";
 

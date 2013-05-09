@@ -5,4 +5,5 @@ import org.isma.pacman.entity.Maze;
 
 public interface MoveHandler<C extends Character> {
     void handleCharacterMove(C character, Maze maze);
+    void reset();
 }

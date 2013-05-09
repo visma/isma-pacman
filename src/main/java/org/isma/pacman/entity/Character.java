@@ -2,8 +2,6 @@ package org.isma.pacman.entity;
 
 import org.isma.pacman.Collisionable;
 import org.isma.pacman.PacmanGameContext;
-import org.isma.pacman.ai.CharacterAI;
-import org.isma.pacman.handlers.MoveHandler;
 import org.isma.slick2d.BitmapObject;
 import org.isma.slick2d.Direction;
 import org.isma.slick2d.PositionHelper;
@@ -13,7 +11,7 @@ import org.newdawn.slick.geom.Rectangle;
 
 import static org.isma.slick2d.Direction.*;
 
-public abstract class Character<C extends Character, A extends CharacterAI>
+public abstract class Character<C extends Character>
         extends BitmapObject<Animation, PacmanGameContext> implements Collisionable {
     private final String name;
 
@@ -33,10 +31,6 @@ public abstract class Character<C extends Character, A extends CharacterAI>
 
     private final float xOriginalPosition;
     private final float yOriginalPosition;
-
-    //
-    private MoveHandler<C> moveHandler;
-    private A ai;
 
     public Character(PacmanGameContext context, String name, float x, float y) {
         super(context, x, y);
@@ -136,10 +130,6 @@ public abstract class Character<C extends Character, A extends CharacterAI>
 
     public abstract int getMoveLevel();
 
-    public void move(Maze maze) {
-        getMoveHandler().handleCharacterMove((C) this, maze);
-    }
-
 
     //------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------
@@ -186,13 +176,6 @@ public abstract class Character<C extends Character, A extends CharacterAI>
         return currentDirection;
     }
 
-    public MoveHandler<C> getMoveHandler() {
-        return moveHandler;
-    }
-
-    public void setMoveHandler(MoveHandler<C> moveHandler) {
-        this.moveHandler = moveHandler;
-    }
 
     public abstract void lose();
 
@@ -200,9 +183,6 @@ public abstract class Character<C extends Character, A extends CharacterAI>
         x = xOriginalPosition;
         y = yOriginalPosition;
         currentDirection = null;
-        if (ai != null) {
-            ai.reinitialize();
-        }
     }
 
     public String getName() {
@@ -225,13 +205,6 @@ public abstract class Character<C extends Character, A extends CharacterAI>
         return lastInput;
     }
 
-    public A getAi() {
-        return ai;
-    }
-
-    public void setAi(A ai) {
-        this.ai = ai;
-    }
 
     public boolean hit(Collisionable other) {
         return getHitBox().intersects(other.getHitBox());
@@ -239,5 +212,15 @@ public abstract class Character<C extends Character, A extends CharacterAI>
 
     public Rectangle getHitBox() {
         return getCenter();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return name.equals(((Character) o).name);
+    }
+
+    @Override
+    public int hashCode() {
+        return getName().hashCode();
     }
 }

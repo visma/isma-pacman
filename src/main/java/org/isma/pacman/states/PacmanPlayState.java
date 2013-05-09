@@ -43,16 +43,15 @@ public class PacmanPlayState extends AbstractPacmanPlayState {
 
     @Override
     protected void configurePacmanMoveHandlerAndAI(GameContainer container) {
-        pacman.setMoveHandler(new CharacterInputMoveHandler<Pacman>(container.getInput()));
-        pacman.setAi(null);
+        gameMovesManager.put(pacman, new CharacterInputMoveHandler<Pacman>(container.getInput()));
     }
 
     @Override
     protected void configureGhostsMoveHandlerAndAI(GameContainer container) {
-        MoveHandler<Ghost> ghostMoveHandler = new GhostAIMoveHandler(pacman, maze);
         for (Ghost ghost : ghosts) {
-            ghost.setMoveHandler(ghostMoveHandler);
-            ghost.setAi(new ShortestPathAI(ghost, maze));
+            ShortestPathAI ai = new ShortestPathAI(ghost, maze);
+            MoveHandler<Ghost> ghostMoveHandler = new GhostAIMoveHandler(pacman, maze, ai);
+            gameMovesManager.put(ghost, ghostMoveHandler);
         }
     }
 }

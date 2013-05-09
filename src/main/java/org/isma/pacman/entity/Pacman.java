@@ -1,7 +1,6 @@
 package org.isma.pacman.entity;
 
 import org.isma.pacman.PacmanGameContext;
-import org.isma.pacman.ai.PacmanAI;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
@@ -10,7 +9,7 @@ import org.newdawn.slick.geom.Rectangle;
 import static org.isma.slick2d.Direction.*;
 import static org.isma.slick2d.RenderableFactory.buildAnimation;
 
-public class Pacman extends Character<Pacman, PacmanAI> implements Target {
+public class Pacman extends Character<Pacman> implements Target {
     private static final String STOPPED_KEY_SUFFIX = "_stopped";
     private static final String DEATH_KEY = "death";
 

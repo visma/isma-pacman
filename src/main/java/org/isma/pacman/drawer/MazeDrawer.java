@@ -3,6 +3,7 @@ package org.isma.pacman.drawer;
 import org.isma.math.SinusVariation;
 import org.isma.math.TrigoFunctionFactory;
 import org.isma.pacman.PacmanGameContext;
+import org.isma.pacman.entity.Food;
 import org.isma.pacman.entity.Maze;
 import org.isma.slick2d.drawer.TiledMapDrawer;
 import org.newdawn.slick.Color;
@@ -12,7 +13,6 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.geom.Vector2f;
-import org.newdawn.slick.tiled.TiledMap;
 
 public class MazeDrawer extends TiledMapDrawer<Maze, PacmanGameContext> {
     private boolean enableNightEffect = true;
@@ -26,9 +26,16 @@ public class MazeDrawer extends TiledMapDrawer<Maze, PacmanGameContext> {
     private SinusVariation colorVariation = TrigoFunctionFactory.buildSinus(0.005f, 0.3f, true, 0.5f);
 
     @Override
-    public void draw(Graphics g, TiledMap tiledMap, int layerIndex) throws SlickException {
-        super.draw(g, tiledMap, layerIndex);
-
+    public void draw(Graphics g, Maze maze, int layerIndex) throws SlickException {
+        if (context.isDebugMode()) {
+            layerIndex = maze.getPathTiledLayer().getIndex();
+        } else {
+            layerIndex = maze.getDisplayLayer().getIndex();
+        }
+        super.draw(g, maze, layerIndex);
+        for (Food food : maze.getFoodMap().values()) {
+            food.draw(maze.getRenderableDrawer());
+        }
         if (enableNightEffect) {
 //            nightEffect(g);
 //            colorEffect(g);

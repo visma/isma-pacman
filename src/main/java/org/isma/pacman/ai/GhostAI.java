@@ -1,6 +1,7 @@
 package org.isma.pacman.ai;
 
 import org.isma.graph.Graph;
+import org.isma.pacman.MazeMoveHelper;
 import org.isma.pacman.entity.Ghost;
 import org.isma.pacman.entity.Maze;
 import org.isma.pacman.entity.Pacman;
@@ -47,7 +48,7 @@ public abstract class GhostAI extends CharacterAI<Ghost> {
 
     @Override
     protected boolean mustRecomputeNewDirection(Ghost aCharacter, Maze maze) {
-        List<Direction> possibleMoves = maze.getPossibleMoves(aCharacter);
+        List<Direction> possibleMoves = MazeMoveHelper.getPossibleMoves(maze, aCharacter);
         return possibleMoves.size() > 2 || !possibleMoves.contains(aCharacter.getCurrentDirection());
     }
 

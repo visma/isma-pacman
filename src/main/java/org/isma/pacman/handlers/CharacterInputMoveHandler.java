@@ -1,8 +1,9 @@
 package org.isma.pacman.handlers;
 
-import org.isma.slick2d.Direction;
-import org.isma.pacman.entity.Maze;
+import org.isma.pacman.MazeMoveHelper;
 import org.isma.pacman.entity.Character;
+import org.isma.pacman.entity.Maze;
+import org.isma.slick2d.Direction;
 import org.newdawn.slick.Input;
 
 import java.util.Arrays;
@@ -46,16 +47,16 @@ public class CharacterInputMoveHandler<C extends Character> implements MoveHandl
 
     private boolean updateCharacterPosition(Direction direction, Character character, Maze maze) {
         if (direction != null) {
-            if ((direction == WEST) && maze.canMoveLeft(character)) {
+            if ((direction == WEST) && MazeMoveHelper.canMoveLeft(maze, character)) {
                 character.move(direction, maze);
                 return true;
-            } else if (direction == EAST && maze.canMoveRight(character)) {
+            } else if (direction == EAST && MazeMoveHelper.canMoveRight(maze, character)) {
                 character.move(direction, maze);
                 return true;
-            } else if (direction == NORTH && maze.canMoveTop(character)) {
+            } else if (direction == NORTH && MazeMoveHelper.canMoveTop(maze, character)) {
                 character.move(direction, maze);
                 return true;
-            } else if (direction == SOUTH && maze.canMoveBottom(character)) {
+            } else if (direction == SOUTH && MazeMoveHelper.canMoveBottom(maze, character)) {
                 character.move(direction, maze);
                 return true;
             }
@@ -63,5 +64,7 @@ public class CharacterInputMoveHandler<C extends Character> implements MoveHandl
         return false;
     }
 
-
+    @Override
+    public void reset() {
+    }
 }

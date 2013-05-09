@@ -1,26 +1,21 @@
 package org.isma.pacman.entity;
 
 import org.isma.pacman.PacmanGameContext;
-import org.isma.pacman.drawer.MazeDrawer;
 import org.isma.pacman.tileset.DisplayTiledLayer;
 import org.isma.pacman.tileset.FoodTiledLayer;
 import org.isma.pacman.tileset.PathTiledLayer;
-import org.isma.slick2d.Direction;
 import org.isma.slick2d.PositionHelper;
 import org.isma.slick2d.drawer.RenderableDrawer;
 import org.isma.slick2d.tileset.TiledObject;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static org.isma.pacman.PacmanProperty.LEVEL_TILES;
-import static org.isma.slick2d.Direction.*;
 
 public class Maze extends TiledObject<PacmanGameContext> {
     public static final int MAZE_WIDTH = 224;
@@ -34,7 +29,6 @@ public class Maze extends TiledObject<PacmanGameContext> {
     private final Rectangle fruitSpawnPoint;
 
     private RenderableDrawer renderableDrawer;
-    private MazeDrawer tiledMapDrawer;
 
     public Maze(PacmanGameContext context) throws SlickException {
         super(context);
@@ -65,53 +59,6 @@ public class Maze extends TiledObject<PacmanGameContext> {
 
     protected String getTiledMapPropertyName() {
         return LEVEL_TILES.getPropertyName();
-    }
-
-
-    public void draw(Graphics g) throws SlickException {
-        int layerIndex;
-        if (context.isDebugMode()) {
-            layerIndex = pathLayer.getIndex();
-        } else {
-            layerIndex = displayLayer.getIndex();
-        }
-        tiledMapDrawer.draw(g, getTiledMap(), layerIndex);
-        for (Food food : foodMap.values()) {
-            food.draw(renderableDrawer);
-        }
-    }
-
-    public List<Direction> getPossibleMoves(org.isma.pacman.entity.Character character) {
-        List<Direction> directions = new ArrayList<Direction>();
-        if (canMoveLeft(character)) {
-            directions.add(WEST);
-        }
-        if (canMoveRight(character)) {
-            directions.add(EAST);
-        }
-        if (canMoveTop(character)) {
-            directions.add(NORTH);
-        }
-        if (canMoveBottom(character)) {
-            directions.add(SOUTH);
-        }
-        return directions;
-    }
-
-    public boolean canMoveLeft(Character character) {
-        return pathLayer.existPath(character.getLeftLine(), character.getMoveLevel());
-    }
-
-    public boolean canMoveRight(Character character) {
-        return pathLayer.existPath(character.getRightLine(), character.getMoveLevel());
-    }
-
-    public boolean canMoveTop(Character character) {
-        return pathLayer.existPath(character.getTopLine(), character.getMoveLevel());
-    }
-
-    public boolean canMoveBottom(Character character) {
-        return pathLayer.existPath(character.getBottomLine(), character.getMoveLevel());
     }
 
 
@@ -167,6 +114,10 @@ public class Maze extends TiledObject<PacmanGameContext> {
         return new GhostCorner(pathLayer.getGhostCorner(ghost.getName(), cornerIndex));
     }
 
+    public DisplayTiledLayer getDisplayLayer() {
+        return displayLayer;
+    }
+
     public PathTiledLayer getPathTiledLayer() {
         return pathLayer;
     }
@@ -183,7 +134,7 @@ public class Maze extends TiledObject<PacmanGameContext> {
         this.renderableDrawer = renderableDrawer;
     }
 
-    public void setTiledMapDrawer(MazeDrawer tiledMapDrawer) {
-        this.tiledMapDrawer = tiledMapDrawer;
+    public RenderableDrawer getRenderableDrawer() {
+        return renderableDrawer;
     }
 }

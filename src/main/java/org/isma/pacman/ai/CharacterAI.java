@@ -1,6 +1,7 @@
 package org.isma.pacman.ai;
 
 import org.isma.graph.Graph;
+import org.isma.pacman.MazeMoveHelper;
 import org.isma.pacman.entity.Character;
 import org.isma.pacman.entity.Maze;
 import org.isma.pacman.entity.Pacman;
@@ -35,7 +36,7 @@ public abstract class CharacterAI<C extends Character> {
             onTileReached();
 
             if (mustRecomputeNewDirection(character, maze)) {
-                List<Direction> possiblesMoves = maze.getPossibleMoves(character);
+                List<Direction> possiblesMoves = MazeMoveHelper.getPossibleMoves(maze, character);
                 Direction aiDirection = chooseDirection(pacman, maze, pathGraph, possiblesMoves);
                 Direction reverseDirection = getReverseDirection(currentDirection);
                 if (aiDirection == null || (aiDirection == reverseDirection && !authorizeTurningBack())) {

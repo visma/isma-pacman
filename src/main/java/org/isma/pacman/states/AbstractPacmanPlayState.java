@@ -2,6 +2,7 @@ package org.isma.pacman.states;
 
 import org.isma.pacman.*;
 import org.isma.pacman.entity.*;
+import org.isma.pacman.manager.GameMovesManager;
 import org.isma.pacman.manager.SimpleDrawerManager;
 import org.isma.pacman.resources.PacmanSoundResources;
 import org.isma.slick2d.BasicResourcesGameState;
@@ -46,8 +47,10 @@ public abstract class AbstractPacmanPlayState extends BasicResourcesGameState<Pa
     private Round round;
     protected Game game;
 
-    private boolean freezeGameEvent;
+    //Managers
+    protected GameMovesManager gameMovesManager;
 
+    private boolean freezeGameEvent;
     private final Timer timer;
 
 
@@ -56,6 +59,7 @@ public abstract class AbstractPacmanPlayState extends BasicResourcesGameState<Pa
         timer = new Timer();
         soundResources = context.getResourcesManager().getSoundResources();
         drawerManager = new SimpleDrawerManager(context);
+        gameMovesManager = new GameMovesManager();
     }
 
 
@@ -102,7 +106,6 @@ public abstract class AbstractPacmanPlayState extends BasicResourcesGameState<Pa
 
         //Drawers
         maze.setRenderableDrawer(drawerManager.getRenderableDrawer());
-        maze.setTiledMapDrawer(drawerManager.getMazeDrawer());
 
         gameBoard.setRenderableDrawer(drawerManager.getRenderableDrawer());
         gameBoard.setTextDrawer(drawerManager.getTextDrawer());
@@ -120,7 +123,7 @@ public abstract class AbstractPacmanPlayState extends BasicResourcesGameState<Pa
 
         handleFruitSpawn();
 
-        handleMoves();
+        gameMovesManager.moveEverybody(maze);
 
         handlePacmanDotVoracity();
 
@@ -268,6 +271,7 @@ public abstract class AbstractPacmanPlayState extends BasicResourcesGameState<Pa
         for (Ghost ghost : ghosts) {
             ghost.resetOriginalState();
         }
+        gameMovesManager.resetAllAI();
         round.reset();
     }
 
@@ -361,17 +365,10 @@ public abstract class AbstractPacmanPlayState extends BasicResourcesGameState<Pa
         }
     }
 
-    private void handleMoves() {
-        pacman.move(maze);
-        for (Ghost ghost : ghosts) {
-            ghost.move(maze);
-        }
-    }
-
 
     public void doRender(GameContainer container, StateBasedGame stateBasedGame, Graphics g) throws SlickException {
         //TODO cycles partout entre les entities et les drawers : corriger afin que les entities ne connaissent pas les drawers
-        maze.draw(g);
+        drawerManager.getMazeDrawer().draw(g, maze, -1);
         gameBoard.draw(pacman.getLives(), game, round, fruit);
 
         if (pacman.isDead() || !game.over) {
