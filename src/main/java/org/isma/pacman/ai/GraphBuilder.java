@@ -46,7 +46,7 @@ public class GraphBuilder {
         Map<Point, Vertex> vertexes = new HashMap<Point, Vertex>();
         for (int i = 0; i < pathTiledLayer.getTiledMap().getWidth(); i++) {
             for (int j = 0; j < pathTiledLayer.getTiledMap().getHeight(); j++) {
-                if (pathTiledLayer.properties().isPath(i, j)) {
+                if (pathTiledLayer.isPath(i, j)) {
                     Point point = new Point(i, j);
                     vertexes.put(point, new Vertex<Point>(point));
                 }
@@ -94,16 +94,16 @@ public class GraphBuilder {
             throw new RuntimeException("?");
         }
 
-        if (pathTiledLayer.properties().isPath(left)) {
+        if (pathTiledLayer.isPath(left)) {
             adjacents.add(left);
         }
-        if (pathTiledLayer.properties().isPath(right)) {
+        if (pathTiledLayer.isPath(right)) {
             adjacents.add(right);
         }
-        if (pathTiledLayer.properties().isPath(down)) {
+        if (pathTiledLayer.isPath(down)) {
             adjacents.add(down);
         }
-        if (pathTiledLayer.properties().isPath(up)) {
+        if (pathTiledLayer.isPath(up)) {
             adjacents.add(up);
         }
 

@@ -1,6 +1,6 @@
 package org.isma.pacman.resources;
 
-import org.isma.slick2d.GameResourcesLoader;
+import org.isma.slick2d.resources.GameResourcesLoader;
 import org.isma.slick2d.resources.SoundResources;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;

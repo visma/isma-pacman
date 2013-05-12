@@ -46,9 +46,9 @@ public class Maze extends TiledObject<PacmanGameContext> {
     public void loadFood() throws SlickException {
         List<Point> foodPositions = foodLayer.getFoodPositionList();
         for (Point foodPosition : foodPositions) {
-            if (foodLayer.properties().isPacgum(foodPosition.x, foodPosition.y)) {
+            if (foodLayer.isPacgum(foodPosition.x, foodPosition.y)) {
                 foodMap.put(foodPosition, MazeBuilder.addPacgum(foodPosition, getTiledMap(), context));
-            } else if (foodLayer.properties().isEnergizer(foodPosition.x, foodPosition.y)) {
+            } else if (foodLayer.isEnergizer(foodPosition.x, foodPosition.y)) {
                 foodMap.put(foodPosition, MazeBuilder.addEnergizer(foodPosition, getTiledMap(), context));
             } else {
                 throw new RuntimeException("wtf ??");
@@ -84,12 +84,12 @@ public class Maze extends TiledObject<PacmanGameContext> {
         StringBuilder sb = new StringBuilder();
         for (int y = 0; y < getTiledMap().getHeight(); y++) {
             for (int x = 0; x < getTiledMap().getWidth(); x++) {
-                if (!pathLayer.properties().isPath(x, y)) {
+                if (!pathLayer.isPath(x, y)) {
                     sb.append("#");
                 } else {
-                    if (foodLayer.properties().isPacgum(x, y)) {
+                    if (foodLayer.isPacgum(x, y)) {
                         sb.append(".");
-                    } else if (foodLayer.properties().isEnergizer(x, y)) {
+                    } else if (foodLayer.isEnergizer(x, y)) {
                         sb.append("@");
                     } else {
                         sb.append(" ");

@@ -3,7 +3,7 @@ package org.isma.pacman.entity;
 import org.isma.pacman.context.PacmanGameContext;
 import org.isma.pacman.resources.PacmanFontResources;
 import org.isma.pacman.resources.PacmanResourcesManager;
-import org.isma.slick2d.GameObject;
+import org.isma.slick2d.entity.GameObject;
 import org.isma.slick2d.drawer.RenderableDrawer;
 import org.isma.slick2d.drawer.TextDrawer;
 import org.newdawn.slick.Color;

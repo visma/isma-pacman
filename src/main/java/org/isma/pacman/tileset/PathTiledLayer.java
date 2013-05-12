@@ -13,8 +13,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.lang.Integer.parseInt;
+
 //TODO faire du visitor pour tous les parcours x,y de tileMap
-public class PathTiledLayer extends TiledLayer<PathTiledLayerProperties> {
+public class PathTiledLayer extends TiledLayer {
+    private static final String PATH_PROPERTY_NAME = "path";
+    private static final String GHOST_HOUSE_PROPERTY_NAME = "house";
+
     //TODO un peu bourrin cette Map de points...
     private final Map<Point, Integer> pathPoints = new HashMap<Point, Integer>();
     private final Rectangle bounds;
@@ -30,6 +35,32 @@ public class PathTiledLayer extends TiledLayer<PathTiledLayerProperties> {
         initPathPoints();
     }
 
+    public boolean isPath(Point point) {
+        return isPath(point.x, point.y);
+    }
+
+    public boolean isPath(int x, int y) {
+        int tileId = getTiledMap().getTileId(x, y, getIndex());
+        String tileProperty = getTiledMap().getTileProperty(tileId, PATH_PROPERTY_NAME, "0");
+        return parseInt(tileProperty) > 0;
+    }
+
+    public Integer getPath(int x, int y) {
+        int tileId = getTiledMap().getTileId(x, y, getIndex());
+        return parseInt(getTiledMap().getTileProperty(tileId, PATH_PROPERTY_NAME, null));
+    }
+
+    public boolean isGhostHouse(int x, int y) {
+        int tileId = getTiledMap().getTileId(x, y, getIndex());
+        return parseInt(getTiledMap().getTileProperty(tileId, GHOST_HOUSE_PROPERTY_NAME, "0")) == 1;
+    }
+
+    public boolean isGhostCorner(int x, int y, String ghostName, int cornerIndex) {
+        int tileId = getTiledMap().getTileId(x, y, getIndex());
+        return parseInt(getTiledMap().getTileProperty(tileId, ghostName, "0")) == cornerIndex;
+    }
+
+    //TODO unused ?
     private List<Point> getAdjacentPaths(Point point) {
         int xLowerBound = 0;
         int xUpperBound = getTiledMap().getWidth() - 1;
@@ -69,27 +100,28 @@ public class PathTiledLayer extends TiledLayer<PathTiledLayerProperties> {
             throw new RuntimeException("?");
         }
 
-        if (properties().isPath(left)) {
+        if (isPath(left)) {
             adjacents.add(left);
         }
-        if (properties().isPath(right)) {
+        if (isPath(right)) {
             adjacents.add(right);
         }
-        if (properties().isPath(down)) {
+        if (isPath(down)) {
             adjacents.add(down);
         }
-        if (properties().isPath(up)) {
+        if (isPath(up)) {
             adjacents.add(up);
         }
 
         return adjacents;
     }
 
+    //TODO unused ?
     private Map<Point, Vertex> buildVertexes() {
         Map<Point, Vertex> vertexes = new HashMap<Point, Vertex>();
         for (int i = 0; i < getTiledMap().getWidth(); i++) {
             for (int j = 0; j < getTiledMap().getHeight(); j++) {
-                if (properties().isPath(i, j)) {
+                if (isPath(i, j)) {
                     Point point = new Point(i, j);
                     vertexes.put(point, new Vertex<Point>(point));
                 }
@@ -98,10 +130,6 @@ public class PathTiledLayer extends TiledLayer<PathTiledLayerProperties> {
         return vertexes;
     }
 
-    @Override
-    protected PathTiledLayerProperties buildProperties() {
-        return new PathTiledLayerProperties(this);
-    }
 
     public boolean existPath(Line line, int moveLevel) {
         float[] point1 = line.getPoint(0);
@@ -120,8 +148,8 @@ public class PathTiledLayer extends TiledLayer<PathTiledLayerProperties> {
     private void initPathPoints() {
         for (int i = 0; i < getTiledMap().getWidth(); i++) {
             for (int j = 0; j < getTiledMap().getHeight(); j++) {
-                if (properties().isPath(i, j)) {
-                    putPathPoints(i, j, properties().getPath(i, j));
+                if (isPath(i, j)) {
+                    putPathPoints(i, j, getPath(i, j));
                 }
             }
         }
@@ -140,7 +168,7 @@ public class PathTiledLayer extends TiledLayer<PathTiledLayerProperties> {
     public Rectangle getGhostHouse() {
         for (int i = 0; i < getTiledMap().getWidth(); i++) {
             for (int j = 0; j < getTiledMap().getHeight(); j++) {
-                if (properties().isGhostHouse(i, j)) {
+                if (isGhostHouse(i, j)) {
                     return getRectangle(i, j);
                 }
             }
@@ -151,7 +179,7 @@ public class PathTiledLayer extends TiledLayer<PathTiledLayerProperties> {
     public Rectangle getGhostCorner(String ghostName, int cornerIndex) {
         for (int i = 0; i < getTiledMap().getWidth(); i++) {
             for (int j = 0; j < getTiledMap().getHeight(); j++) {
-                if (properties().isGhostCorner(i, j, ghostName, cornerIndex)) {
+                if (isGhostCorner(i, j, ghostName, cornerIndex)) {
                     return getRectangle(i, j);
                 }
             }

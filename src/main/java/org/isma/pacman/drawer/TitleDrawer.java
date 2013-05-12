@@ -1,7 +1,7 @@
 package org.isma.pacman.drawer;
 
 import org.isma.math.SinusVariation;
-import org.isma.slick2d.GameContext;
+import org.isma.slick2d.context.GameContext;
 import org.isma.slick2d.drawer.TextDrawer;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Font;

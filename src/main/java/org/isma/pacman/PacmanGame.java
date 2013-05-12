@@ -6,7 +6,7 @@ import org.isma.pacman.manager.HighScoreManager;
 import org.isma.pacman.repository.FileHighScoreRepository;
 import org.isma.pacman.resources.PacmanResourcesManager;
 import org.isma.pacman.states.*;
-import org.isma.slick2d.GameResourcesLoader;
+import org.isma.slick2d.resources.GameResourcesLoader;
 import org.isma.slick2d.ResourcesGame;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
